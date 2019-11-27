@@ -1,9 +1,11 @@
 <template>
   <v-app>
     <v-content>
-      <transition mode="out-in">
-        <router-view />
-      </transition>
+      <v-container>
+        <transition mode="out-in">
+          <router-view />
+        </transition>
+      </v-container>
       <Nav />
     </v-content>
   </v-app>
@@ -13,7 +15,12 @@
 import Nav from "@/components/Navigation";
 
 export default {
-  components: { Nav }
+  components: { Nav },
+  created() {
+    // LSの設定値を取得
+    let urls = localStorage.getItem(this.$store.state.lsKey.url);
+    this.$store.commit("urls", JSON.parse(urls));
+  }
 };
 </script>
 
@@ -31,6 +38,7 @@ export default {
 <style>
 * {
   user-select: none;
+  font-family: "メイリオ", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
 }
 html {
   overflow: auto !important;
