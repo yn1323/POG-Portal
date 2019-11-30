@@ -24,7 +24,9 @@ export default {
   computed: {
     routes: {
       get() {
-        return routes;
+        return this.$store.state.url
+          ? routes
+          : routes.filter(obj => obj.meta.showWithoutUrl);
       }
     },
     selection: {
