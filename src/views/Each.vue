@@ -6,34 +6,39 @@
       :items="items"
       :items-per-page="50"
       class="elevation-2"
-      hide-default-footer
       :mobile-breakpoint="200"
-      @click:row="hoge"
+      hide-default-footer
     ></v-data-table>
   </v-content>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      url: this.$route.query.url
+    };
+  },
   computed: {
     headers: {
       get() {
-        return this.$store.state.table.Top.header;
+        return this.$store.state.table.EachPerson.header;
       }
     },
     items: {
       get() {
-        return this.$store.state.table.Top.tbody;
+        return this.$store.state.table.EachPerson.tbody;
       }
     }
   },
   mounted() {
+    this.$store.commit("delTable", "EachPerson");
     this.fetch();
     // タブ切り替え
     this.watch = this.$store.watch(
       state => state.url,
       () => {
-        this.fetch();
+        this.$router.push("/Top");
       }
     );
   },
@@ -42,10 +47,7 @@ export default {
   },
   methods: {
     fetch() {
-      this.$store.dispatch("pogTop", this.$store.state.url);
-    },
-    hoge(row) {
-      this.$router.push({ path: "/Each", query: { url: row.url } });
+      this.$store.dispatch("pogEachP", this.url);
     }
   }
 };
@@ -59,7 +61,4 @@ export default {
 .v-data-table thead tr:last-child th {
   color: white;
 }
-/* .v-data-table tbody td {
-    font-size: 12px !important;
-} */
 </style>

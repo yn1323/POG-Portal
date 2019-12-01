@@ -16,5 +16,4 @@ const store = new Vuex.Store({
   mutations,
   state
 });
-
 export default store;

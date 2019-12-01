@@ -4,7 +4,7 @@
       <Tabs />
       <v-container class="px-8">
         <transition mode="out-in">
-          <router-view />
+          <router-view class="mb-12" />
         </transition>
       </v-container>
       <Nav />
@@ -55,5 +55,12 @@ export default {
 }
 html {
   overflow: auto !important;
+}
+/* v-data-table */
+.v-data-table-header {
+  background: var(--v-primary-base);
+}
+.v-data-table thead tr:last-child th {
+  color: white;
 }
 </style>
