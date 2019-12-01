@@ -4,5 +4,10 @@ export default {
   },
   // 設定したURL
   urls: [{ name: "", url: "" }],
-  url: ""
+  url: "",
+  table: {
+    Top: {},
+    Recent: {},
+    Horse: {}
+  }
 };
