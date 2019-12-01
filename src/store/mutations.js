@@ -10,6 +10,8 @@ export default {
     state.table[payload.page] = payload.data;
   },
   delTable(state, tableName) {
-    state.table[tableName] = {};
+    if (state.table[tableName].tbody) {
+      state.table[tableName].tbody = [];
+    }
   }
 };
