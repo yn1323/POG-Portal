@@ -6,6 +6,7 @@
       :items="items"
       :items-per-page="50"
       class="elevation-2"
+      :loading="!items.length"
       hide-default-footer
       :mobile-breakpoint="200"
       @click:row="hoge"
@@ -18,12 +19,12 @@ export default {
   computed: {
     headers: {
       get() {
-        return this.$store.state.table.Top.header;
+        return this.$store.state.table.Top.header || [];
       }
     },
     items: {
       get() {
-        return this.$store.state.table.Top.tbody;
+        return this.$store.state.table.Top.tbody || [];
       }
     }
   },
@@ -33,6 +34,7 @@ export default {
     this.watch = this.$store.watch(
       state => state.url,
       () => {
+        this.$store.commit("delTable", "Top");
         this.fetch();
       }
     );

@@ -6,6 +6,7 @@
       :items="items"
       :items-per-page="50"
       class="elevation-2"
+      :loading="!items.length"
       :mobile-breakpoint="200"
       hide-default-footer
     ></v-data-table>
@@ -22,12 +23,12 @@ export default {
   computed: {
     headers: {
       get() {
-        return this.$store.state.table.EachPerson.header;
+        return this.$store.state.table.EachPerson.header || [];
       }
     },
     items: {
       get() {
-        return this.$store.state.table.EachPerson.tbody;
+        return this.$store.state.table.EachPerson.tbody || [];
       }
     }
   },

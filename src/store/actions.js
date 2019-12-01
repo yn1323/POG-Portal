@@ -23,16 +23,19 @@ let post = (path, x, callback) => {
     });
 };
 export default {
-  // eslint-disable-next-line
-  pogTop: ({commit}, url) => {
+  pogTop: ({ commit }, url) => {
     post("/pogTop", { url: url }, r =>
       commit("setTable", { page: "Top", data: r })
     );
   },
-  // eslint-disable-next-line
   pogEachP: ({ commit }, url) => {
     post("/pogEachP", { url: url }, r =>
       commit("setTable", { page: "EachPerson", data: r })
+    );
+  },
+  pogHorse: ({ commit }, url) => {
+    post("/pogHorse", { url: url }, r =>
+      commit("setTable", { page: "Horse", data: r })
     );
   }
 };
