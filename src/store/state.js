@@ -7,6 +7,7 @@ export default {
   url: "",
   table: {
     Top: {},
+    EachPerson: {},
     Recent: {},
     Horse: {}
   }

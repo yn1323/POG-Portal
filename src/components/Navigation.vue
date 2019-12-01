@@ -25,8 +25,8 @@ export default {
     routes: {
       get() {
         return this.$store.state.url
-          ? routes
-          : routes.filter(obj => obj.meta.showWithoutUrl);
+          ? routes.filter(obj => obj.meta.nav)
+          : routes.filter(obj => obj.meta.showWithoutUrl && obj.meta.nav);
       }
     },
     selection: {

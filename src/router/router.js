@@ -5,6 +5,7 @@ const FILES = [
     text: "人別",
     icon: "fas fa-crown",
     meta: {
+      nav: true,
       showWithoutUrl: false
     }
   },
@@ -13,6 +14,7 @@ const FILES = [
     text: "馬別",
     icon: "fas fa-horse",
     meta: {
+      nav: true,
       showWithoutUrl: false
     }
   },
@@ -21,6 +23,7 @@ const FILES = [
     text: "直近レース",
     icon: "fas fa-space-shuttle",
     meta: {
+      nav: true,
       showWithoutUrl: false
     }
   },
@@ -29,6 +32,16 @@ const FILES = [
     text: "設定",
     icon: "fas fa-cogs",
     meta: {
+      nav: true,
+      showWithoutUrl: true
+    }
+  },
+  {
+    file: "Each",
+    text: "Each",
+    icon: "",
+    meta: {
+      nav: false,
       showWithoutUrl: true
     }
   }

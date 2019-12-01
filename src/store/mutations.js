@@ -8,5 +8,8 @@ export default {
   },
   setTable(state, payload) {
     state.table[payload.page] = payload.data;
+  },
+  delTable(state, tableName) {
+    state.table[tableName] = {};
   }
 };
