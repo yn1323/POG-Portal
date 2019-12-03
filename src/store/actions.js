@@ -37,5 +37,10 @@ export default {
     post("/pogHorse", { url: url }, r =>
       commit("setTable", { page: "Horse", data: r })
     );
+  },
+  pogRace: ({ commit }, url) => {
+    post("/pogRace", { url: url }, r =>
+      commit("setTable", { page: "Recent", data: r })
+    );
   }
 };
