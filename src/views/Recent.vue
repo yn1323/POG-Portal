@@ -8,7 +8,6 @@
       class="elevation-2"
       :loading="!items.length"
       hide-default-footer
-      :mobile-breakpoint="200"
     ></v-data-table>
   </v-content>
 </template>
@@ -18,7 +17,6 @@ export default {
   computed: {
     headers: {
       get() {
-        console.log(this.$store.state.table.Recent.header);
         return this.$store.state.table.Recent.header || [];
       }
     },
@@ -61,4 +59,7 @@ export default {
 /* .v-data-table tbody td {
     font-size: 12px !important;
 } */
+.v-data-table-header-mobile {
+  display: none;
+}
 </style>
