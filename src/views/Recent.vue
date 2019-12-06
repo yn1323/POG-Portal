@@ -6,7 +6,7 @@
       :items="items"
       :items-per-page="1000"
       class="elevation-2"
-      :loading="!items.length"
+      :loading="loading"
       hide-default-footer
     ></v-data-table>
   </v-content>
@@ -15,6 +15,11 @@
 <script>
 export default {
   computed: {
+    loading: {
+      get() {
+        return this.$store.state.cnt ? true : false;
+      }
+    },
     headers: {
       get() {
         return this.$store.state.table.Recent.header || [];
