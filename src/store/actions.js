@@ -1,10 +1,10 @@
 import axios from "axios";
 // デバッグ用
 const DEBUG = false;
-// TODO: productionでの切り替え
-const HOST = "http://0.0.0.0:5000";
+const HOST = process.env.VUE_APP_HOST;
 
 let showError = error => {
+  // eslint-disable-next-line
   console.error(error);
 };
 let post = (path, x, callback) => {
@@ -15,6 +15,7 @@ let post = (path, x, callback) => {
         showError(response.data.ERROR);
         return false;
       }
+      // eslint-disable-next-line
       if (DEBUG) console.log(response.data);
       callback(response.data);
     })
@@ -37,5 +38,19 @@ export default {
     post("/pogHorse", { url: url }, r =>
       commit("setTable", { page: "Horse", data: r })
     );
+  },
+  // Herokuのタイムアウト回避
+  pogRace: ({ commit }, url) => {
+    post("/pogRace", { url: url }, r => {
+      commit("setTable", { page: "Recent", data: r });
+      commit("setCounter", r.urls.length);
+      r.urls.forEach(raceUrl => {
+        post("/pogRaceEach", { url: raceUrl, horse: r.names }, running => {
+          let toRun = running.raceHorse.filter(horse => horse.detail);
+          commit("setTableBody", { page: "Recent", tbody: toRun });
+          commit("decrement");
+        });
+      });
+    });
   }
 };

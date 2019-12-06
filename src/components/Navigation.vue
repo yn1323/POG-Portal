@@ -34,6 +34,7 @@ export default {
         return routes[0].path;
       },
       set(x) {
+        alert("clicked");
         this.$router.push(x);
       }
     }

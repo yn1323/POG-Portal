@@ -10,5 +10,6 @@ export default {
     EachPerson: {},
     Recent: {},
     Horse: {}
-  }
+  },
+  cnt: 0
 };
