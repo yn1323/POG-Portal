@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode local",
-    "build--vue": "vue-cli-service build --mode production",
-    "build": "vue-cli-service build --dest src-cordova/www --mode production",
+    "build-": "vue-cli-service build --mode production",
+    "build--cordova": "vue-cli-service build --dest src-cordova/www --mode production",
     "build-watch": "vue-cli-service build --dest src-cordova/www --watch",
     "lint": "vue-cli-service lint",
     "cordova-build-android": "cross-env CORDOVA_PLATFORM=android vue-cli-service cordova-build-android --mode production",
