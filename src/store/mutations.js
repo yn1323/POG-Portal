@@ -29,5 +29,9 @@ export default {
   },
   decrement(state) {
     state.cnt--;
+  },
+  changeUrlOrder(state, index){
+    state.urls.splice(index - 1, 2, state.urls[index], state.urls[index - 1]);
+    state.url = state.urls[0].url;
   }
 };

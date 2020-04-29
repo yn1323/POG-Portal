@@ -7,23 +7,37 @@
       :key="index"
     >
       <v-row>
-        <v-text-field
-          :label="nameText"
-          v-model="urls[index].name"
-          :maxLength="maxLenName"
-          @input="save"
-          color="primary"
-        />
+        <v-col>
+          <v-text-field
+            :label="nameText"
+            v-model="urls[index].name"
+            :maxLength="maxLenName"
+            @input="save"
+            color="primary"
+          />
+        </v-col>
       </v-row>
       <v-row>
-        <v-text-field
-          :label="urlText"
-          v-model="urls[index].url"
-          :maxLength="maxLenUrl"
-          @input="save"
-          color="primary"
-          solo
-        />
+        <v-col cols="10">
+          <v-text-field
+            :label="urlText"
+            v-model="urls[index].url"
+            :maxLength="maxLenUrl"
+            @input="save"
+            color="primary"
+            solo
+          />
+        </v-col>
+        <v-col cols="2" v-if="index !== 0">
+          <v-btn
+            class="mx-3"
+            dark
+            color="primary"
+            @click="changeOrder(index)"
+          >
+            <v-icon dark>fas fa-angle-up</v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
       <v-divider></v-divider>
     </v-col>
@@ -86,6 +100,12 @@ export default {
     },
     filterUrl(urls) {
       return urls.filter(obj => obj.name || obj.url);
+    },
+    // URLの順番変更
+    changeOrder(index){
+      this.$store.commit("changeUrlOrder", index)
+      // LSに反映
+      this.save();
     }
   }
 };
