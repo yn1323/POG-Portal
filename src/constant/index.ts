@@ -1,1 +1,1 @@
-export * from 'src/constant/ui'
+export const test = ''

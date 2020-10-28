@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import store from 'src/store'
 import { BrowserRouter } from 'react-router-dom'
 import Index from 'src/page/Index'
 import registerServiceWorker from 'src/reagisterServiceWorker'
 import 'src/asset/style/index.scss'
-import Icon from '@material-ui/core/Icon'
 
 const run = () => {
   ReactDOM.render(
     <React.StrictMode>
+      <Provider store={store}>
       <BrowserRouter>
         <Index />
-      </BrowserRouter>
+      </BrowserRouter></Provider>
     </React.StrictMode>,
     document.getElementById('root')
   )

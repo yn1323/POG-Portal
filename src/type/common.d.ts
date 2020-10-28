@@ -1,1 +1,3 @@
-declare module 'common' {}
+export interface Hoge {
+  [key: string]: any
+}

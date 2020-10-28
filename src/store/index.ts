@@ -2,10 +2,10 @@ import { combineReducers } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 
-import sample from 'src/store/selection'
+import selection from 'src/store/selection'
 
 const reducer = combineReducers({
-  sample,
+  selection,
 })
 
 // getDefaultMiddleware: serializeエラーがスマホで発生するため
