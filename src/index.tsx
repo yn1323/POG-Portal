@@ -11,9 +11,10 @@ const run = () => {
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={store}>
-      <BrowserRouter>
-        <Index />
-      </BrowserRouter></Provider>
+        <BrowserRouter>
+          <Index />
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode>,
     document.getElementById('root')
   )

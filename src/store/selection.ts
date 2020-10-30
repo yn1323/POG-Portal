@@ -7,7 +7,7 @@ export type SelectionState = {
   url: string
 }
 
-const initialState: SelectionState[] = [{name: "test", url: "test"}]
+const initialState: SelectionState[] = [{ name: 'test', url: 'test' }]
 // )
 
 const State = createSlice({

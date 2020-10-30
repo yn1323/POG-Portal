@@ -17,10 +17,9 @@ const Public: React.FC = () => {
       <Route exact path="/horse" component={HorseData} />
       <Route exact path="/detail" component={PersonalDetail} />
       <Route exact path="/race" component={RecentRace} />
-      {
-        process.env.NODE_ENV === 'development' &&
+      {process.env.NODE_ENV === 'development' && (
         <Route exact path="/gallery" component={Gallery} />
-      }
+      )}
       <Route component={NotFound} status={404} />
     </Switch>
   )
