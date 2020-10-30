@@ -10,7 +10,6 @@ module.exports = {
   ],
   plugins: ['@typescript-eslint', 'react', 'prettier'],
   env: {node: true, es6: true},
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
     ecmaFeatures: {

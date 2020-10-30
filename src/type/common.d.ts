@@ -1,3 +1,3 @@
-export interface Hoge {
+export interface AnyObj {
   [key: string]: any
 }

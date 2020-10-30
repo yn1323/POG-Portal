@@ -3,15 +3,9 @@ import { useHistory } from 'react-router-dom'
 
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { Flag, Group, Pets, Settings } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles({
-  stickToBottom: {
-    width: '100%',
-    position: 'fixed',
-    bottom: 0,
-  },
-})
+import { useStyles } from 'src/constant'
+
 interface Icon {
   label: string
   icon: any
@@ -39,7 +33,7 @@ export default () => {
     <BottomNavigation
       value={scene}
       onChange={(_, newVal) => setScene(newVal)}
-      className={classes.stickToBottom}
+      className={classes.stickBottom}
       showLabels
     >
       {icons.map(({ label, icon, path }: Icon, i: number) => (

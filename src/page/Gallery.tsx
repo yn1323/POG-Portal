@@ -1,10 +1,10 @@
 import React from 'react'
-import TextField from 'src/component/atom/TextField'
+import FormUrl from 'src/component/organism/FormUrl'
 
 export default () => {
   return (
     <div>
-      <TextField type="Standard" />
+      <FormUrl />
     </div>
   )
 }

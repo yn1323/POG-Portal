@@ -9,7 +9,7 @@ export default () => {
   return (
     <>
       <NavigationTop />
-      <Box m={1}>
+      <Box m={1} py={6}>
         <Suspense fallback={<div>Please wait....</div>}>
           <Route />
         </Suspense>

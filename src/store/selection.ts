@@ -3,12 +3,23 @@ import { createSlice } from '@reduxjs/toolkit'
 const STATENAME = 'Selection'
 
 export type SelectionState = {
-  name: string
+  pageName: string
   url: string
 }
 
-const initialState: SelectionState[] = [{ name: 'test', url: 'test' }]
-// )
+export const defaultSelectionState: SelectionState = { pageName: '', url: '' }
+
+const initialState: SelectionState[] = [
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'test' },
+  { pageName: 'test', url: 'teskjkjt' },
+]
 
 const State = createSlice({
   name: STATENAME,
