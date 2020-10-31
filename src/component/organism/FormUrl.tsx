@@ -41,6 +41,12 @@ export default () => {
     setData(saveData)
   }
 
+  const add = () => {
+    const t = deepcopy(data)
+    t.push({ ...defaultSelectionState })
+    setData(t)
+  }
+
   const pageName = (index: number) => (
     <TextField
       label="ページ名"
@@ -59,7 +65,7 @@ export default () => {
   )
   return (
     <>
-      <HeaderConfig add={() => <ButtonAdd />} />
+      <HeaderConfig add={() => <ButtonAdd add={add} />} />
       {data.map((_: SelectionState, i: number) => (
         <TextUrl key={i} pageName={() => pageName(i)} url={() => url(i)} />
       ))}
