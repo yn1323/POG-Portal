@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import TextField from '@material-ui/core/TextField'
 
@@ -20,6 +20,12 @@ interface Props {
 
 export default memo(
   ({ type, label = '', defaultValue = '', setter }: Props) => {
+    const [ref, setRef] = useState(defaultValue)
+
+    useEffect(() => {
+      setRef(defaultValue)
+    }, [defaultValue])
+
     const classes = useStyles()
     const textFieldType = {
       Standard: { id: 'standard-basic' },
@@ -28,10 +34,10 @@ export default memo(
     }
     return (
       <form className={classes.root} noValidate autoComplete="off">
-   <TextField
+        <TextField
           id={textFieldType[type].id}
           label={label}
-          defaultValue={defaultValue}
+          value={ref}
           onChange={e => setter(e.target.value)}
         />
       </form>

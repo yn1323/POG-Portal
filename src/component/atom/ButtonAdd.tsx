@@ -3,7 +3,6 @@ import { IconButton, makeStyles } from '@material-ui/core'
 import { PlaylistAdd } from '@material-ui/icons'
 
 const useStyles = makeStyles(theme => {
-  console.log(theme)
   return {
     root: {
       '& > *': {
