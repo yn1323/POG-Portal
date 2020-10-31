@@ -28,7 +28,7 @@ export default memo(
     }
     return (
       <form className={classes.root} noValidate autoComplete="off">
-        <TextField
+   <TextField
           id={textFieldType[type].id}
           label={label}
           defaultValue={defaultValue}

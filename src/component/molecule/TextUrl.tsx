@@ -1,14 +1,5 @@
-import React from 'react'
 import { Box } from '@material-ui/core'
-
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     '& > *': {
-//       margin: theme.spacing(1),
-//       width: '95%',
-//     },
-//   },
-// }))
+import React from 'react'
 
 interface Props {
   pageName: () => JSX.Element

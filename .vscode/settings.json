@@ -1,7 +1,5 @@
 {
   "css.validate": true,
-  "editor.formatOnSave": false,
-  "eslint.enable": true,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "stylelint.enable": false,
@@ -10,13 +8,19 @@
     "files.trimTrailingWhitespace": false
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "codeActionsOnSaveTimeout": true,
+    "editor.codeActionsOnSaveTimeout": true,
   },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+  },
+  "editor.formatOnSave": false,
   "eslint.workingDirectories": [
     {
       "directory": "./app",
       "changeProcessCWD": true
     }
   ],
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
 }
