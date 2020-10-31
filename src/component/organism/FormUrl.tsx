@@ -9,6 +9,8 @@ import { deepcopy } from 'src/helper'
 import TextUrl from 'src/component/molecule/TextUrl'
 import ButtonAdd from 'src/component/atom/ButtonAdd'
 import ButtonOK from 'src/component/atom/ButtonOK'
+import MoveUp from 'src/component/atom/ButtonUp'
+import MoveDown from 'src/component/atom/ButtonDown'
 import TextField from 'src/component/atom/TextField'
 import ConfirmConfig from 'src/component/molecule/ConfirmConfig'
 import HeaderConfig from 'src/component/molecule/HeaderConfig'
@@ -67,7 +69,13 @@ export default () => {
     <>
       <HeaderConfig add={() => <ButtonAdd add={add} />} />
       {data.map((_: SelectionState, i: number) => (
-        <TextUrl key={i} pageName={() => pageName(i)} url={() => url(i)} />
+        <TextUrl
+          key={i}
+          pageName={() => pageName(i)}
+          url={() => url(i)}
+          moveup={() => <MoveUp setter={() => console.log('clicked')} />}
+          movedown={() => <MoveDown setter={() => console.log('clicked')} />}
+        />
       ))}
       {/* 保存ボタンと重ならないため */}
       <Box mb={5} />

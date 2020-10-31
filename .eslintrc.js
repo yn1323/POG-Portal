@@ -21,5 +21,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'react/display-name': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
+    'no-irregular-whitespace': 'off'
   }
 }
