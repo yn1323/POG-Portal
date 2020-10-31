@@ -17,7 +17,7 @@ export default memo(({ confirm }: Props) => {
   const classes = useStyles()
   const cclasses = customStyles()
   return (
-    <Box className={classes.stickBottomInTab}>
+    <Box className={classes.stickBottomInTab} bgcolor="white">
       <Container>
         <Box className={cclasses.root}>{confirm()}</Box>
       </Container>

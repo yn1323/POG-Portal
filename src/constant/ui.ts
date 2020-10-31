@@ -19,6 +19,6 @@ export const useStyles: any = makeStyles({
   stickBottomInTab: {
     width: '100%',
     position: 'fixed',
-    bottom: 60,
+    bottom: 56,
   },
 })
