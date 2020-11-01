@@ -39,9 +39,16 @@ const State = createSlice({
       localStorage.setItem(LSNAME, JSON.stringify(t))
       return [t]
     },
+    makeSelected: (state: SelectionState[], { payload }) => {
+      const t = deepcopy(state).map((v: SelectionState, i: number) => {
+        v.selected = i === payload
+        return v
+      })
+      return t
+    },
   },
 })
 
 export default State.reducer
 
-export const { update } = State.actions
+export const { makeSelected, update } = State.actions
