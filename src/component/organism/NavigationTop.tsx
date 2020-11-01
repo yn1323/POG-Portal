@@ -5,7 +5,6 @@ import { AppBar, Tabs, Tab } from '@material-ui/core'
 
 import { useStyles } from 'src/constant'
 import { SelectionState, State } from 'src/type/state'
-import { selectedPage } from 'src/helper'
 import { makeSelected } from 'src/store'
 
 export default () => {
@@ -13,7 +12,6 @@ export default () => {
   const { selection = {} as SelectionState } = useSelector(
     (state: State) => state
   )
-  const page = selectedPage(selection)
 
   const selectedIndex = () => {
     let index = 0

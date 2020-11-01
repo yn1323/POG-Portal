@@ -37,7 +37,7 @@ const State = createSlice({
         return v
       })
       localStorage.setItem(LSNAME, JSON.stringify(t))
-      return [t]
+      return t
     },
     makeSelected: (state: SelectionState[], { payload }) => {
       const t = deepcopy(state).map((v: SelectionState, i: number) => {
