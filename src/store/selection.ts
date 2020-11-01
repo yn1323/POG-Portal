@@ -1,13 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { deepcopy } from 'src/helper'
 
 const STATENAME = 'Selection'
 const LSNAME = 'POG_PORTAL'
 export type SelectionState = {
   pageName: string
   url: string
+  selected: boolean
 }
 
-export const defaultSelectionState: SelectionState = { pageName: '', url: '' }
+export const defaultSelectionState: SelectionState = {
+  pageName: '',
+  url: '',
+  selected: false,
+}
 
 const initialState: SelectionState[] = (() => {
   try {
@@ -25,8 +31,13 @@ const State = createSlice({
   initialState,
   reducers: {
     update: (_: SelectionState[], { payload }) => {
-      localStorage.setItem(LSNAME, JSON.stringify(payload))
-      return [...payload]
+      // 選択状態
+      const t = deepcopy(payload).map((v: SelectionState, i: number) => {
+        v.selected = i === 0
+        return v
+      })
+      localStorage.setItem(LSNAME, JSON.stringify(t))
+      return [t]
     },
   },
 })
