@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { Flag, Group, Pets, Settings } from '@material-ui/icons'
@@ -14,7 +14,16 @@ interface Icon {
 
 export default () => {
   const history = useHistory()
-  const [scene, setScene] = useState(0)
+  const location = useLocation()
+  const paths = [
+    { path: '/', index: 0 },
+    { path: '/horse', index: 1 },
+    { path: '/race', index: 2 },
+    { path: '/config', index: 3 },
+  ]
+  const [scene, setScene] = useState(
+    paths.find(v => v.path === location.pathname)?.index || 0
+  )
   const classes = useStyles()
 
   const icons: Icon[] = useMemo(
