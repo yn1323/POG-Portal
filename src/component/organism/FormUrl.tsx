@@ -4,7 +4,7 @@ import { Box } from '@material-ui/core'
 
 import { defaultSelectionState, update } from 'src/store/selection'
 
-import { deepcopy } from 'src/helper'
+import { deepcopy, replaceArray } from 'src/helper'
 
 import TextUrl from 'src/component/molecule/TextUrl'
 import ButtonAdd from 'src/component/atom/ButtonAdd'
@@ -24,7 +24,6 @@ export default () => {
   )
 
   const [data, setData] = useState(selection)
-  console.log(data)
 
   const set = (index: number, target: string, val: string) => {
     const t = deepcopy(data)
@@ -41,6 +40,11 @@ export default () => {
     }
     dispatch(update(saveData))
     setData(saveData)
+  }
+  const replace = (from: number, to: number) => {
+    const t = replaceArray(data, to, from)
+    dispatch(update(t))
+    setData(t)
   }
 
   const add = () => {
@@ -65,6 +69,15 @@ export default () => {
       setter={v => set(index, 'url', v)}
     />
   )
+  const moveUp = (index: number) =>
+    index === 0 ? <></> : <MoveUp setter={() => replace(index, index - 1)} />
+
+  const moveDown = (index: number) =>
+    index === data.length - 1 ? (
+      <></>
+    ) : (
+      <MoveDown setter={() => replace(index, index + 1)} />
+    )
   return (
     <>
       <HeaderConfig add={() => <ButtonAdd add={add} />} />
@@ -73,8 +86,8 @@ export default () => {
           key={i}
           pageName={() => pageName(i)}
           url={() => url(i)}
-          moveup={() => <MoveUp setter={() => console.log('clicked')} />}
-          movedown={() => <MoveDown setter={() => console.log('clicked')} />}
+          moveup={() => moveUp(i)}
+          movedown={() => moveDown(i)}
         />
       ))}
       {/* 保存ボタンと重ならないため */}
