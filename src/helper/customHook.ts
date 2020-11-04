@@ -15,7 +15,7 @@ export const useUrl = () => {
   return url
 }
 
-export const useFetch = (action: any) => {
+export const useFetch = async (action: any) => {
   const dispatch = useDispatch()
   const url = useUrl()
   useEffect(() => {

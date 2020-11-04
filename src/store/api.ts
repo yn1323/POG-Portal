@@ -8,14 +8,18 @@ export type ApiState = {
   detail: any
   horse: any
   race: any
+  isLoading: boolean
 }
 
-const initialState: ApiState = {
+const defaultState: ApiState = {
   top: {},
   detail: {},
   horse: {},
   race: {},
+  isLoading: true,
 }
+
+const initialState: ApiState = { ...defaultState }
 
 export const fetchTotal = createAsyncThunk(
   `${STATENAME}/fetchTotal`,
@@ -44,29 +48,25 @@ const State = createSlice({
     },
   },
   extraReducers: ({ addCase }) => {
-    addCase(fetchTotal.pending, (state: ApiState) => {
-      state.top = {}
-    })
-      .addCase(fetchDetail.pending, (state: ApiState) => {
-        state.personalDetail = {}
-      })
-      .addCase(fetchHorse.pending, (state: ApiState) => {
-        state.horseData = {}
-      })
-      .addCase(fetchRace.pending, (state: ApiState) => {
-        state.recentRace = {}
-      })
+    addCase(fetchTotal.pending, () => ({ ...defaultState }))
+      .addCase(fetchDetail.pending, () => ({ ...defaultState }))
+      .addCase(fetchHorse.pending, () => ({ ...defaultState }))
+      .addCase(fetchRace.pending, () => ({ ...defaultState }))
       .addCase(fetchTotal.fulfilled, (state: ApiState, { payload }: any) => {
         state.top = { ...payload }
+        state.isLoading = false
       })
       .addCase(fetchDetail.fulfilled, (state: ApiState, { payload }: any) => {
-        state.top = { ...payload }
+        state.detail = { ...payload }
+        state.isLoading = false
       })
       .addCase(fetchHorse.fulfilled, (state: ApiState, { payload }: any) => {
-        state.top = { ...payload }
+        state.horse = { ...payload }
+        state.isLoading = false
       })
       .addCase(fetchRace.fulfilled, (state: ApiState, { payload }: any) => {
-        state.top = { ...payload }
+        state.race = { ...payload }
+        state.isLoading = false
       })
   },
 })
