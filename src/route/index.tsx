@@ -9,7 +9,7 @@ const RecentRace = lazy(() => import('src/page/RecentRace'))
 const NotFound = lazy(() => import('src/page/404'))
 const Gallery = lazy(() => import('src/page/Gallery'))
 
-const Public: React.FC = () => {
+export default () => {
   return (
     <Switch>
       <Route exact path="/" component={Top} />
@@ -24,5 +24,3 @@ const Public: React.FC = () => {
     </Switch>
   )
 }
-
-export default Public

@@ -13,3 +13,4 @@ export interface State extends PreloadState {
   [key: string]: any
 }
 export type SelectionState = PreloadState.SelectionState
+export type ApiState = PreloadState.Api
