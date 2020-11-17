@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
+import { useSelected } from 'src/helper'
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
 import { Flag, Group, Pets, Settings } from '@material-ui/icons'
 
@@ -15,6 +16,7 @@ interface Icon {
 export default () => {
   const history = useHistory()
   const location = useLocation()
+  const hasUrl = useSelected()
   const paths = [
     { path: '/', index: 0 },
     { path: '/horse', index: 1 },
@@ -26,15 +28,18 @@ export default () => {
   )
   const classes = useStyles()
 
-  const icons: Icon[] = useMemo(
-    () => [
+  const icons: Icon[] = useMemo(() => {
+    let buttons = [{ label: '設定', icon: <Settings />, path: '/config' }]
+    const hasUrlButtons = [
       { label: '人別', icon: <Group />, path: '/' },
       { label: '馬別', icon: <Pets />, path: '/horse' },
       { label: 'レース', icon: <Flag />, path: '/race' },
-      { label: '設定', icon: <Settings />, path: '/config' },
-    ],
-    []
-  )
+    ]
+    if (hasUrl) {
+      buttons = [...buttons, ...hasUrlButtons]
+    }
+    return buttons
+  }, [hasUrl])
 
   const transition = (path: string) => history.push(path)
 
