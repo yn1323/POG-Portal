@@ -33,10 +33,10 @@ export default () => {
     const hasUrlButtons = [
       { label: '人別', icon: <Group />, path: '/' },
       { label: '馬別', icon: <Pets />, path: '/horse' },
-      { label: 'レース', icon: <Flag />, path: '/race' },
+      // { label: 'レース', icon: <Flag />, path: '/race' },
     ]
     if (hasUrl) {
-      buttons = [...buttons, ...hasUrlButtons]
+      buttons = [...hasUrlButtons, ...buttons]
     }
     return buttons
   }, [hasUrl])

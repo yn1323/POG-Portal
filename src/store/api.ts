@@ -23,19 +23,19 @@ const initialState: ApiState = { ...defaultState }
 
 export const fetchTotal = createAsyncThunk(
   `${STATENAME}/fetchTotal`,
-  async (params: any) => req(`pogTop`, params)
+  async (params: any) => req(`/pog/top`, params)
 )
 export const fetchDetail = createAsyncThunk(
   `${STATENAME}/fetchDetail`,
-  async (params: any) => req('/pogEachP', params)
+  async (params: any) => req('/pog/person', params)
 )
 export const fetchHorse = createAsyncThunk(
   `${STATENAME}/fetchHorse`,
-  async (params: any) => req('/pogHorse', params)
+  async (params: any) => req('/pog/horse', params)
 )
 export const fetchRace = createAsyncThunk(
   `${STATENAME}/fetchRace`,
-  async (params: any) => req('/pogRace', params)
+  async (params: any) => req('/pog/raceUrl', params)
 )
 
 const State = createSlice({

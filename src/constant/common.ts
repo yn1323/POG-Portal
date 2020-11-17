@@ -1,5 +1,5 @@
 // デバッグ用
 export const END_POINT =
   process.env.NODE_ENV === 'production'
-    ? 'https://python-server-api.herokuapp.com/'
-    : 'http://0.0.0.0:5000/'
+    ? 'https://qvbfc9vxcc.execute-api.ap-northeast-1.amazonaws.com/coconut'
+    : 'http://0.0.0.0:5000'
