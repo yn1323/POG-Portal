@@ -8,8 +8,10 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core'
+import { makeTbodyArray } from 'src/helper'
 
 interface Header {
+  [key: string]: any
   text: string
   value: string
 }
@@ -17,13 +19,14 @@ interface TBody {
   [key: string]: any
 }
 interface Props {
+  [key: string]: any
   header: Header[]
   tbody: TBody[]
 }
 
 export default ({ header = [], tbody = [] }: Props) => {
   const headerLabel = header.map(v => v.text)
-  const headerVal = header.map(v => v.value)
+  const headerKeys = header.map(v => v.value)
 
   return (
     <TableContainer component={Paper}>
@@ -40,9 +43,9 @@ export default ({ header = [], tbody = [] }: Props) => {
         <TableBody>
           {tbody.map((row, i) => (
             <TableRow key={i}>
-              {headerVal.map(v => (
-                <TableCell align="center" key={v}>
-                  {row[v]}
+              {headerKeys.map((key, j) => (
+                <TableCell align="center" key={j}>
+                  {row[key]}
                 </TableCell>
               ))}
             </TableRow>

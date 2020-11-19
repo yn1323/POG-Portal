@@ -7,18 +7,6 @@ import Spinner from 'src/component/molecule/CenterSpinner'
 import TableData from 'src/component/template/TableData'
 import { ApiState, State } from 'src/type/state'
 
-// const HelloSuspenseWorld = () => {
-//   if (cache) {
-//     return cache
-//   }
-
-//   throw new Promise(async resolve => {
-//     await sleep(5)
-//     cache = 'hello, suspense world!'
-//     resolve()
-//   })
-// }
-
 export default () => {
   const { api = {} as ApiState } = useSelector((state: State) => state)
   useFetch(fetchTotal)
