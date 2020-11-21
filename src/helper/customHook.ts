@@ -18,7 +18,7 @@ export const useUrl = () => {
 export const useFetch = async ({
   action = null as any,
   param = {},
-  watch = [],
+  watch = [] as any,
 }) => {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -29,15 +29,6 @@ export const useFetch = async ({
   }, watch)
 }
 
-export const useFetchWithUrl = async (action: any, url: string) => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    const f = async () => {
-      await dispatch(await action({ url }))
-    }
-    f()
-  }, [])
-}
 export const usePrevious = (value: any) => {
   const ref = useRef()
   useEffect(() => {

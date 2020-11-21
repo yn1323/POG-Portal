@@ -15,7 +15,7 @@ export default () => {
   const { url } = useSelected()
 
   if (url) {
-    useFetch({ action: fetchTotal, watch: url, param: { url } })
+    useFetch({ action: fetchTotal, watch: [url], param: { url } })
   }
 
   const callback = (d: any) => {
