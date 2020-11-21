@@ -25,3 +25,13 @@ export const useFetch = async (action: any) => {
     f()
   }, [])
 }
+
+export const useFetchWithUrl = async (action: any, url: string) => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const f = async () => {
+      await dispatch(await action({ url }))
+    }
+    f()
+  }, [])
+}

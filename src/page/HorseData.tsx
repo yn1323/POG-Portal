@@ -4,7 +4,7 @@ import { fetchHorse } from 'src/store/api'
 import { useFetch } from 'src/helper'
 
 import Spinner from 'src/component/molecule/CenterSpinner'
-import TableData from 'src/component/template/TableData'
+import SimplateTableData from 'src/component/template/SimplateTableData'
 import { ApiState, State } from 'src/type/state'
 
 export default () => {
@@ -13,6 +13,9 @@ export default () => {
   return api.isLoading ? (
     <Spinner />
   ) : (
-    <TableData header={api.horse.header} tbody={api.horse.tbody}></TableData>
+    <SimplateTableData
+      header={api.horse.header}
+      tbody={api.horse.tbody}
+    ></SimplateTableData>
   )
 }

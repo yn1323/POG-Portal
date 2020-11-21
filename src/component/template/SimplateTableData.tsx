@@ -8,7 +8,6 @@ import {
   TableRow,
   Paper,
 } from '@material-ui/core'
-import { makeTbodyArray } from 'src/helper'
 
 interface Header {
   [key: string]: any
@@ -22,6 +21,7 @@ interface Props {
   [key: string]: any
   header: Header[]
   tbody: TBody[]
+  meta?: any[]
 }
 
 export default ({ header = [], tbody = [] }: Props) => {

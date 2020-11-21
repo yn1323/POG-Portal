@@ -4,7 +4,7 @@ import { fetchTotal } from 'src/store/api'
 import { useFetch } from 'src/helper'
 
 import Spinner from 'src/component/molecule/CenterSpinner'
-import TableData from 'src/component/template/TableData'
+import SimplateTableData from 'src/component/template/SimplateTableData'
 import { ApiState, State } from 'src/type/state'
 
 export default () => {
@@ -12,7 +12,10 @@ export default () => {
   useFetch(fetchTotal)
   return (
     <Suspense fallback={<Spinner />}>
-      <TableData header={api.top.header} tbody={api.top.tbody}></TableData>
+      <SimplateTableData
+        header={api.top.header}
+        tbody={api.top.tbody}
+      ></SimplateTableData>
     </Suspense>
   )
 }

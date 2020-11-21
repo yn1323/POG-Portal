@@ -8,6 +8,7 @@ export type ApiState = {
   detail: any
   horse: any
   race: any
+  detailUrl: string
   isLoading: boolean
 }
 
@@ -16,6 +17,7 @@ const defaultState: ApiState = {
   detail: {},
   horse: {},
   race: {},
+  detailUrl: '',
   isLoading: true,
 }
 
@@ -42,9 +44,8 @@ const State = createSlice({
   name: STATENAME,
   initialState,
   reducers: {
-    setTotal: (state, res) => {
-      console.log(res)
-      return state
+    setDetailUrl: (state, { payload }) => {
+      return { ...state, detailUrl: payload }
     },
   },
   extraReducers: ({ addCase }) => {
@@ -70,5 +71,5 @@ const State = createSlice({
       })
   },
 })
-
 export default State.reducer
+export const { setDetailUrl } = State.actions
