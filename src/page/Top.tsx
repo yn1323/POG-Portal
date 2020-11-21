@@ -12,9 +12,12 @@ export default () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const { api = {} as ApiState } = useSelector((state: State) => state)
-  if (useSelected()) {
-    useFetch(fetchTotal)
+  const { url } = useSelected()
+
+  if (url) {
+    useFetch({ action: fetchTotal, watch: url, param: { url } })
   }
+
   const callback = (d: any) => {
     dispatch(setDetailUrl({ url: d.url }))
     history.push(`/detail`)

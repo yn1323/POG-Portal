@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
 import { useSelected } from 'src/helper'
@@ -28,6 +28,11 @@ export default () => {
   )
   const classes = useStyles()
 
+  // ナビゲーションのハイライト変更
+  useEffect(() => {
+    setScene(paths.find(v => v.path === location.pathname)?.index || 0)
+  }, [location.pathname])
+
   const icons: Icon[] = useMemo(() => {
     let buttons = [{ label: '設定', icon: <Settings />, path: '/config' }]
     const hasUrlButtons = [
@@ -44,12 +49,7 @@ export default () => {
   const transition = (path: string) => history.push(path)
 
   return (
-    <BottomNavigation
-      value={scene}
-      onChange={(_, newVal) => setScene(newVal)}
-      className={classes.stickBottom}
-      showLabels
-    >
+    <BottomNavigation value={scene} className={classes.stickBottom} showLabels>
       {icons.map(({ label, icon, path }: Icon, i: number) => (
         <BottomNavigationAction
           key={i}

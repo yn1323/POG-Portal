@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { AppBar, Tabs, Tab } from '@material-ui/core'
 
@@ -8,6 +9,7 @@ import { SelectionState, State } from 'src/type/state'
 import { makeSelected } from 'src/store'
 
 export default () => {
+  const history = useHistory()
   const dispatch = useDispatch()
   const { selection = {} as SelectionState } = useSelector(
     (state: State) => state
@@ -32,6 +34,8 @@ export default () => {
         onChange={(_: any, newValue: any) => {
           dispatch(makeSelected(newValue))
           setValue(newValue)
+          history.push('/')
+          // history.go(0)
         }}
         scrollButtons="auto"
         variant="scrollable"

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectionState } from 'src/store'
 import { State } from 'src/type/state'
@@ -15,15 +15,18 @@ export const useUrl = () => {
   return url
 }
 
-export const useFetch = async (action: any) => {
+export const useFetch = async ({
+  action = null as any,
+  param = {},
+  watch = [],
+}) => {
   const dispatch = useDispatch()
-  const url = useUrl()
   useEffect(() => {
     const f = async () => {
-      await dispatch(await action({ url }))
+      await dispatch(await action({ ...param }))
     }
     f()
-  }, [])
+  }, watch)
 }
 
 export const useFetchWithUrl = async (action: any, url: string) => {
@@ -34,4 +37,11 @@ export const useFetchWithUrl = async (action: any, url: string) => {
     }
     f()
   }, [])
+}
+export const usePrevious = (value: any) => {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
 }
