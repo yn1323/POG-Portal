@@ -16,7 +16,7 @@ export default () => {
     useFetch(fetchTotal)
   }
   const callback = (d: any) => {
-    dispatch(setDetailUrl(d.url))
+    dispatch(setDetailUrl({ url: d.url }))
     history.push(`/detail`)
   }
   return api.isLoading ? (

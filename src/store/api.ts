@@ -45,7 +45,7 @@ const State = createSlice({
   initialState,
   reducers: {
     setDetailUrl: (state, { payload }) => {
-      return { ...state, detailUrl: payload }
+      return { ...state, detailUrl: payload.url }
     },
   },
   extraReducers: ({ addCase }) => {
