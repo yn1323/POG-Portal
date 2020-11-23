@@ -13,10 +13,13 @@ export default () => {
   if (!useSelected()) {
     history.push('/config')
   }
+  // buildすると、なぜかRoute内にpyが付与されるので、分岐を追加
+  const padding = process.env.NODE_ENV === 'production' ? 0 : 6
+
   return (
     <>
       <NavigationTop />
-      <Box m={1} py={6}>
+      <Box m={1} py={padding}>
         <Suspense fallback={<Spinner />}>
           <Route />
         </Suspense>
