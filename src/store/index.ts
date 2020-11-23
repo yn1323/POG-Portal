@@ -9,7 +9,7 @@ const reducer = combineReducers({
   selection,
   api,
 })
-
+console.log(process.env.NODE_ENV)
 // getDefaultMiddleware: serializeエラーがスマホで発生するため
 const store = configureStore({
   reducer,
