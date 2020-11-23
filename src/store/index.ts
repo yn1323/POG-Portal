@@ -3,19 +3,20 @@ import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 
 import selection from 'src/store/selection'
+import { isProduction } from 'src/constant'
 import api from 'src/store/api'
 
 const reducer = combineReducers({
   selection,
   api,
 })
-console.log(process.env.NODE_ENV)
+
 // getDefaultMiddleware: serializeエラーがスマホで発生するため
 const store = configureStore({
   reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({ serializableCheck: false }).concat(logger),
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: isProduction,
 })
 
 export default store
