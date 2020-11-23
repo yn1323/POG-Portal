@@ -101,6 +101,7 @@ const State = createSlice({
           const horseInfoKeys = Object.keys(horseInfo)
           const raceInfoKeys = Object.keys(raceInfo)
           horseInfoKeys.forEach((key: string) => {
+            if (key === 'prize') return
             if (!state.race.matchedMeta[key]) {
               state.race.matchedMeta[key] = []
             }
@@ -112,7 +113,6 @@ const State = createSlice({
             }
             state.race.matchedMeta[key].push(raceInfo[key])
           })
-
           state.race.tbody = sortObjectedArray(
             [
               ...state.race.tbody,

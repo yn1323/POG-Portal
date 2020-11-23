@@ -4,7 +4,7 @@ import { fetchHorse } from 'src/store/api'
 import { useFetch, useSelected } from 'src/helper'
 
 import Spinner from 'src/component/molecule/CenterSpinner'
-import SimplateTableData from 'src/component/template/SimplateTableData'
+import SimpleTableData from 'src/component/template/SimpleTableData'
 import { ApiState, State } from 'src/type/state'
 
 export default () => {
@@ -16,9 +16,9 @@ export default () => {
   return api.isLoading ? (
     <Spinner />
   ) : (
-    <SimplateTableData
+    <SimpleTableData
       header={api.horse.header}
       tbody={api.horse.tbody}
-    ></SimplateTableData>
+    ></SimpleTableData>
   )
 }

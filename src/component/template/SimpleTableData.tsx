@@ -19,7 +19,7 @@ interface TBody {
 }
 interface Props {
   [key: string]: any
-  header: Header[]
+  header?: Header[]
   tbody: TBody[]
   meta?: any[]
 }
