@@ -8,7 +8,9 @@ export type ApiState = {
   detail: any
   horse: any
   race: any
+  raceDetail: any[]
   detailUrl: string
+  detailLoadedUrlCnt: number
   isLoading: boolean
 }
 
@@ -17,7 +19,9 @@ const defaultState: ApiState = {
   detail: {},
   horse: {},
   race: {},
+  raceDetail: [],
   detailUrl: '',
+  detailLoadedUrlCnt: 0,
   isLoading: true,
 }
 
@@ -35,9 +39,13 @@ export const fetchHorse = createAsyncThunk(
   `${STATENAME}/fetchHorse`,
   async (params: any) => req('/pog/horse', params)
 )
+export const fetchRaceUrl = createAsyncThunk(
+  `${STATENAME}/fetchRaceUrl`,
+  async (params: any) => req('/pog/raceUrl', params)
+)
 export const fetchRace = createAsyncThunk(
   `${STATENAME}/fetchRace`,
-  async (params: any) => req('/pog/raceUrl', params)
+  async (params: any) => req('/pog/race', params)
 )
 
 const State = createSlice({
@@ -52,7 +60,7 @@ const State = createSlice({
     addCase(fetchTotal.pending, () => ({ ...defaultState }))
       .addCase(fetchDetail.pending, () => ({ ...defaultState }))
       .addCase(fetchHorse.pending, () => ({ ...defaultState }))
-      .addCase(fetchRace.pending, () => ({ ...defaultState }))
+      .addCase(fetchRaceUrl.pending, () => ({ ...defaultState }))
       .addCase(fetchTotal.fulfilled, (state: ApiState, { payload }: any) => {
         state.top = { ...payload }
         state.isLoading = false
@@ -65,9 +73,12 @@ const State = createSlice({
         state.horse = { ...payload }
         state.isLoading = false
       })
-      .addCase(fetchRace.fulfilled, (state: ApiState, { payload }: any) => {
+      .addCase(fetchRaceUrl.fulfilled, (state: ApiState, { payload }: any) => {
         state.race = { ...payload }
-        state.isLoading = false
+      })
+      .addCase(fetchRace.fulfilled, (state: ApiState, { payload }: any) => {
+        state.raceDetail.push({ ...payload })
+        state.isLoading = state.race.url.length !== state.raceDetail.length
       })
   },
 })

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { SelectionState } from 'src/store'
+import { ApiState, SelectionState } from 'src/store'
 import { State } from 'src/type/state'
 
 export const useSelected = () => {
@@ -27,6 +27,12 @@ export const useFetch = async ({
     }
     f()
   }, watch)
+}
+
+export const useUrlLoading = () => {
+  const { api = {} as ApiState } = useSelector((state: State) => state)
+  if (!api.isLoading) return ''
+  return `${api.raceDetail.length} / ${api.race.url?.length || '?'}`
 }
 
 export const usePrevious = (value: any) => {
