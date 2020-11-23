@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchRace, fetchRaceUrl, setDetailUrl } from 'src/store/api'
+import { fetchRace, fetchRaceUrl } from 'src/store/api'
 import { useUrlLoading, useFetch, useSelected } from 'src/helper'
 
 import Spinner from 'src/component/molecule/CenterSpinner'
