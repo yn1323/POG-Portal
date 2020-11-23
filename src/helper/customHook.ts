@@ -31,8 +31,8 @@ export const useFetch = async ({
 
 export const useUrlLoading = () => {
   const { api = {} as ApiState } = useSelector((state: State) => state)
-  if (!api.isLoading) return ''
-  return `${api.raceDetail.length} / ${api.race.url?.length || '?'}`
+  if (!api.isLoading || !api.race.url) return ''
+  return `${api.raceDetail.length} / ${api.race.url.length}`
 }
 
 export const usePrevious = (value: any) => {
