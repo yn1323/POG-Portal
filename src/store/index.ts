@@ -14,8 +14,11 @@ const reducer = combineReducers({
 // getDefaultMiddleware: serializeエラーがスマホで発生するため
 const store = configureStore({
   reducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(logger),
+  middleware: getDefaultMiddleware => {
+    return isProduction
+      ? getDefaultMiddleware({ serializableCheck: false })
+      : getDefaultMiddleware({ serializableCheck: false }).concat(logger)
+  },
   devTools: isProduction,
 })
 
